@@ -9,8 +9,8 @@ export interface FastifySES {
     to: string,
     subject: string,
     text: string,
-    html: string,
-    extra: string) => Promise<void>
+    html?: string,
+    extra?: string) => Promise<void>
 }
 
 export default fp(async (fastify) => {
@@ -39,8 +39,8 @@ export default fp(async (fastify) => {
     to: string,
     subject: string,
     text: string,
-    html: string,
-    extra: string,
+    html?: string,
+    extra?: string,
   ) => {
     if (!subject && (!text || !html)) {
       throw new Error('Invalid email request');
